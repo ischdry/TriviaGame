@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Trivia!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <style> 
+    .container {
+        text-align: center;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </style>
+</head>
+
+<body>
+
+
+<div class = "container">
+    <div id = "displayStage">
+        <h1 class="logo"> Beerbongs and Bentleys Trivia </h1> 
+            <br>
+            <button id ="startButton"> Click Me to Start!</button>
+    </div>
+    <div id = "questionStage" > 
+
+        <h1 class = "logo" > Beerbongs and Bentleys Trivia </h1>
+
+        <h3> Time Left: <span id = "timeLeft" > 0 </span> Seconds <h3> 
+
+        <div>
+            <h2>  When was Post Malone born? </h2>
+            
+            <input type ="radio" name = "q1" value= "1991"> 1991 </input>
+            <input type="radio" name = "q1" value="1993"> 1993 </input>
+            <input type="radio" name="q1" value="1995"> 1995 </input>
+            <input type="radio" name="q1" value="1925"> 1925 </input>
+
+        </div>
+
+
+        <div> 
+            <h2> Where was Post Malone born ? </h2> 
+
+            <input type="radio" name="q2" value="Syracuse"> Syracuse </input>
+            <input type="radio" name="q2" value="Austin"> Austin </input>
+            <input type="radio" name="q2" value="Boston"> Boston </input>
+            <input type="radio" name="q2" value="Tokyo"> Tokyo </input>
+
+        </div>
+
+        <div>
+             <h2> What was the title of Post Malone's most recent Album? </h2>
+
+        <input type="radio" name="q3" value="damn"> DAMN </input>
+        <input type="radio" name="q3" value="beerbongs"> Beerbongs & Bentleys </input>
+        <input type="radio" name="q3" value="stoney"> Stoney </input>
+        <input type="radio" name="q3" value="astroworld"> Astroworld </input>
+
+        </div>
+
+        <div>
+            <h2> What is Post Malone's favorite sports team? </h2>
+
+        <input type="radio" name="q4" value="cowboys"> Cowboys </input>
+        <input type="radio" name="q4" value="packers"> Packers </input>
+        <input type="radio" name="q4" value="patriots"> Patriots </input>
+        <input type="radio" name="q4" value="steelers"> Steelers </input>
+
+        </div>
+
+        <button id = "finished"> Done! </button>
+
+    </div>
+
+
+    <div  id = "resultStage"> 
+
+        <div class = "logo"> Your Done </div> 
+        <div> 
+            <h1> Your Results : </h2> 
+            <h2> Correct :  <span id = "winCount"> 0 </span> </h2> 
+            <h2> Incorrect : <span id = "lossCount"> 0 </span> </h2>
+
+    </div>
+</div>
+
+<script> 
+
+
+    var timer = 60; 
+
+    var numCorrect = 0; 
+    var numWrong = 0; 
+
+
+ $(document).ready (function (){
+
+            $("#questionStage").hide();
+            $("#resultStage").hide();
+
+    $("#startButton").on ("click", function () {
+
+            $("#displayStage").hide (); 
+            $("#questionStage").show(); 
+
+             startCountDown ();
+              return;
+    });
+
+       function startCountdown () {
+        setInterval(countDown(),1000);
+           }
+
+        function countDown () {
+
+        timer--; 
+
+        var parsetimer = parseInt (timer);
+
+        $("#timeLeft").text(parsetimer);
+        $("#timeLeft").append(time);
+
+        // timer is not working
+
+        $("#finsihed").on ("click", function () {
+            timer = 0; 
+            return;
+
+        });
+
+
+
+        if (timer <= 0) {
+            $("#questionStage").hide(); 
+            $("#resultStage").show();
+         }
+
+
+
+        
+
+        function timeUp () {
+
+            var question1 = $('input:radio[name="q1"]:checked').val();
+            var question2 = $('input:radio[name="q1"]:checked').val();
+            var question3 = $('input:radio[name="q1"]:checked').val();
+            var question4 = $('input:radio[name="q1"]:checked').val();
+
+        
+
+        if (question1 === "1991") {
+            numCorrect++; }
+        else {
+            numWrong++; }
+
+        if (question2 === "Syracuse") {
+            numCorrect++; }
+        else {
+            numWrong++; }
+
+        if (question3 === "beerbongs"){
+            numCorrect++; }
+        else {
+        numWrong++; }       
+        
+        if (question4 === "cowboys") {
+        numCorrect++; }
+        else {
+        numWrong++; }
+        }
+
+    }
+
+});
+</script> 
+
+
+
+
+
+            
+    
+</body>
+</html>
